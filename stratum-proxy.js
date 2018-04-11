@@ -131,8 +131,8 @@ var ProxyObject = function(socket, proxy) {
             if (json.method=='mining.submit')
             {
                 json.params[0]=self.proxy.connect.user;
-                data = Buffer.from(JSON.stringify(json) + '\n');
             }
+            data = Buffer.from(JSON.stringify(json) + '\n');
         } catch(e) {}
 
         if ((self.client) && (self.client.remoteAddress)) {
