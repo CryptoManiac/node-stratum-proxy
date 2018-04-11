@@ -70,7 +70,7 @@ var ProxyObject = function(socket, proxy) {
     this.log = function(message) {
         var self = this
         var prefix = '(' + Object.keys(proxies).length + ')[' + self.id + ']'
-        if (self.client) {
+        if (self.client && self.client.localAddress) {
             prefix += '[' + self.client.remoteAddress + ':' + self.client.remotePort + '<-' + self.client.localAddress + ':' + self.client.localPort + ']'
         } else {
             prefix += '[null]'
@@ -121,6 +121,20 @@ var ProxyObject = function(socket, proxy) {
     }
     this.onServerData = function(data) {
         var self = this
+        try {
+            var json=JSON.parse(data.toString());
+            if (json.method == 'mining.authorize')
+            {
+                json.params[0]=self.proxy.connect.user;
+                json.params[1]=self.proxy.connect.password;
+            }
+            if (json.method=='mining.submit')
+            {
+                json.params[0]=self.proxy.connect.user;
+                data = Buffer.from(JSON.stringify(json) + '\n');
+            }
+        } catch(e) {}
+
         if ((self.client) && (self.client.remoteAddress)) {
             self.log('Q: ' + data)
             self.client.write(data)
