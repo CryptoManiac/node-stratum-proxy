@@ -16,6 +16,18 @@
                 "user": "0x8d35067233605bef6069191ae0922d134ff80d48.test1",
                 "password": "x"
             }
+        },
+        {
+            "comment": "EtherDig.net - Ethereum Pay on Target mining pool",
+            "listen": {
+                "port": 4444
+            },
+            "connect": {
+                "host": "etherdig.net",
+                "port": 4444,
+                "user": "0x8d35067233605bef6069191ae0922d134ff80d48.test1",
+                "password": "x"
+            }
         }]
     },
     "development": {},
