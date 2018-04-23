@@ -18,7 +18,7 @@
             }
         },
         {
-            "comment": "EtherDig.net - Ethereum Pay on Target mining pool",
+            "comment": "EtherDig.net - Ethereum Pay Per Share mining pool",
             "listen": {
                 "port": 4444
             },
