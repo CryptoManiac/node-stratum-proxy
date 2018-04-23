@@ -123,14 +123,14 @@ var ProxyObject = function(socket, proxy) {
         var self = this
         try {
             var json=JSON.parse(data.toString());
-            if (json.method == 'mining.authorize')
+            if (json.method == 'mining.authorize' || json.method == 'mining.submit')
             {
-                json.params[0]=self.proxy.connect.user;
-                json.params[1]=self.proxy.connect.password;
-            }
-            if (json.method=='mining.submit')
-            {
-                json.params[0]=self.proxy.connect.user;
+                var auth = json.params[0].split('.')
+                auth[0] = self.proxy.connect.user
+                json.params[0] = auth.join('.')
+                if (json.method == 'mining.authorize') {
+                    json.params[1] = self.proxy.connect.password
+                }
             }
             data = Buffer.from(JSON.stringify(json) + '\n');
         } catch(e) {}
