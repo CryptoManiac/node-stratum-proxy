@@ -13,7 +13,7 @@
             "connect": {
                 "host": "etherdig.net",
                 "port": 3333,
-                "user": "0x8d35067233605bef6069191ae0922d134ff80d48.test1",
+                "user": "0x8d35067233605bef6069191ae0922d134ff80d48",
                 "password": "x"
             }
         },
@@ -25,7 +25,7 @@
             "connect": {
                 "host": "etherdig.net",
                 "port": 4444,
-                "user": "0x8d35067233605bef6069191ae0922d134ff80d48.test1",
+                "user": "0x8d35067233605bef6069191ae0922d134ff80d48",
                 "password": "x"
             }
         }]
